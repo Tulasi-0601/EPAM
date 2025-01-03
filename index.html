@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .employee-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+        #resume-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Employee Details Form</h1>
+
+        <form id="employeeForm" onsubmit="return displayEmployeeDetails(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br><br>
+
+            <label for="id">Employee ID:</label>
+            <input type="text" id="id" required><br><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required><br><br>
+
+            <label for="department">Department:</label>
+            <input type="text" id="department" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required><br><br>
+
+            <label for="image">Upload Picture:</label>
+            <input type="file" id="image" accept="image/*"><br><br>
+
+            <label for="resume">Upload Resume (PDF):</label>
+            <input type="file" id="resume" accept="application/pdf"><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="employee-details" id="employeeDetails" style="display: none;">
+            <h2>Employee Details</h2>
+            <p><strong>Name:</strong> <span style="color: red;" id="displayName"></span></p>
+            <p><strong>Employee ID:</strong> <span id="displayId"></span></p>
+            <p><strong>Address:</strong> <span id="displayAddress"></span></p>
+            <p><strong>Department:</strong> <span id="displayDepartment"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+            <p><strong>Age:</strong> <span id="displayAge"></span></p>
+            <p><strong>Picture:</strong></p>
+            <img id="displayPicture" alt="Employee Picture">
+            <p><strong>Resume:</strong></p>
+            <a id="resumeLink" href="#" target="_blank" id="resume-link">View Resume</a>
+        </div>
+    </div>
+
+    <script>
+        // Function to calculate age from the date of birth
+        function calculateAge(dob) {
+            const today = new Date();
+            const birthDate = new Date(dob);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        // Function to display the employee details
+        function displayEmployeeDetails(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const name = document.getElementById("name").value;
+            const id = document.getElementById("id").value;
+            const address = document.getElementById("address").value;
+            const department = document.getElementById("department").value;
+            const dob = document.getElementById("dob").value;
+            const image = document.getElementById("image").files[0];
+            const resume = document.getElementById("resume").files[0];
+
+            // Calculate age from DOB
+            const age = calculateAge(dob);
+
+            // Display the employee details
+            document.getElementById("displayName").innerText = name;
+            document.getElementById("displayId").innerText = id;
+            document.getElementById("displayAddress").innerText = address;
+            document.getElementById("displayDepartment").innerText = department;
+            document.getElementById("displayDob").innerText = dob;
+            document.getElementById("displayAge").innerText = age;
+
+            // Display employee's picture
+            if (image) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById("displayPicture").src = event.target.result;
+                };
+                reader.readAsDataURL(image);
+            }
+
+            // Display the resume link
+            if (resume) {
+                const resumeUrl = URL.createObjectURL(resume);
+                document.getElementById("resumeLink").href = resumeUrl;
+                document.getElementById("resumeLink").innerText = "View Resume";
+            }
+
+            // Show the employee details section
+            document.getElementById("employeeDetails").style.display = "block";
+        }
+    </script>
+</body>
+<!-- ### HTML Code Explanation
+
+1. **`<!DOCTYPE html>`**
+   - Declares the document type as HTML5, ensuring compatibility with modern web standards.
+
+2. **`<html lang="en">`**
+   - Defines the language of the document as English, which helps search engines and screen readers.
+
+3. **`<head>`**
+   - Contains metadata and links to styles and scripts for the webpage.
+
+4. **`<meta charset="UTF-8">`**
+   - Specifies the character encoding for the document as UTF-8, supporting a wide range of characters.
+
+5. **`<meta name="viewport" content="width=device-width, initial-scale=1.0">`**
+   - Ensures the webpage is responsive by setting the viewport width to the device's width.
+
+6. **`<title>Employee Details</title>`**
+   - Sets the title of the webpage, displayed on the browser tab.
+
+7. **`<style>`**
+   - Includes internal CSS to style the webpage.
+
+8. **`body { font-family: Arial, sans-serif; margin: 20px; }`**
+   - Sets the font style and page margin.
+
+9. **`.container { max-width: 600px; margin: 0 auto; }`**
+   - Centers the container and restricts its width to 600px.
+
+10. **`.employee-details { ... }`**
+    - Styles the employee details section with padding, border, and background.
+
+11. **`img { max-width: 150px; border-radius: 50%; }`**
+    - Limits the image size and makes it circular.
+
+12. **`#resume-link { ... }`**
+    - Styles the resume link with color and spacing.
+
+### **Body and Form**
+
+13. **`<body>`**
+    - Starts the body of the HTML document.
+
+14. **`<div class="container">`**
+    - Wraps the content inside a styled container.
+
+15. **`<h1>Employee Details Form</h1>`**
+    - Displays the main heading of the form.
+
+16. **`<form id="employeeForm" onsubmit="return displayEmployeeDetails(event)">`**
+    - Defines a form with an `id`. The `onsubmit` attribute calls the `displayEmployeeDetails` function.
+
+17. **`<label>` and `<input>` elements**
+    - Collect user inputs:
+        - **`type="text"`** for name, ID, address, and department.
+        - **`type="date"`** for DOB.
+        - **`type="file"`** for uploading pictures and resumes.
+
+18. **`<button type="submit">Submit</button>`**
+    - A button to submit the form and trigger the JavaScript function.
+
+### **Employee Details Section**
+
+19. **`<div class="employee-details" id="employeeDetails" style="display: none;">`**
+    - Initially hidden; displays employee details after form submission.
+
+20. **`<p>` and `<span>`**
+    - Placeholders to dynamically display the employee details.
+
+21. **`<img id="displayPicture" alt="Employee Picture">`**
+    - Placeholder for the uploaded image.
+
+22. **`<a id="resumeLink" href="#" target="_blank">View Resume</a>`**
+    - Placeholder for the uploaded resume link.
+
+### **JavaScript Code**
+
+23. **`<script>`**
+    - Begins the JavaScript section.
+
+24. **`function calculateAge(dob)`**
+    - Calculates the age from the entered DOB:
+      - Converts the DOB to a date object.
+      - Subtracts the birth year from the current year.
+      - Adjusts for the current date if the birth month or day hasn’t occurred yet.
+
+25. **`function displayEmployeeDetails(event)`**
+    - Prevents the form from submitting with `event.preventDefault()`.
+    - Retrieves form values using `document.getElementById().value`.
+
+26. **Image Handling**
+    - Reads and displays the uploaded image using a `FileReader` object.
+
+27. **Resume Handling**
+    - Creates a temporary URL for the uploaded resume using `URL.createObjectURL()`.
+
+28. **`document.getElementById("employeeDetails").style.display = "block";`**
+    - Makes the employee details section visible.
+
+29. **Closing Tags**
+    - **`</script>`**: Ends the script section.
+    - **`</body>` and `</html>`**: Close the body and HTML tags.
+
+This code combines HTML for structure, CSS for styling, and JavaScript for interactivity, creating a functional and user-friendly employee details form.-->
+<!-- The difference between `form action` and `form id` lies in their purpose and functionality:
+
+---
+
+### **1. `form action`:**
+- **Purpose:**
+  - Specifies the URL where the form's data will be sent after submission.
+- **Functionality:**
+  - Used for **server-side processing**. When the user submits the form, the browser sends the form data to the specified server endpoint for handling.
+- **Optional Attribute:**
+  - If omitted, the form submits to the current URL.
+
+#### **Example:**
+```html
+<form action="/submit-form" method="POST">
+    <input type="text" name="username" placeholder="Enter your username">
+    <button type="submit">Submit</button>
+</form>
+```
+- Here, when the form is submitted, the data is sent to the `/submit-form` URL.
+
+---
+
+### **2. `form id`:**
+- **Purpose:**
+  - Assigns a unique identifier to the form element.
+- **Functionality:**
+  - Used for **client-side scripting** (e.g., JavaScript) to target and manipulate the form.
+  - Does not affect the behavior of the form submission.
+- **Mandatory Uniqueness:**
+  - The `id` must be unique within the HTML document.
+
+#### **Example:**
+```html
+<form id="loginForm">
+    <input type="text" name="username" placeholder="Enter your username">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    // Access the form using its id
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+        console.log("Form submitted!");
+    });
+</script>
+```
+
+---
+
+### **Key Differences:**
+
+| Feature             | `action`                          | `id`                                    |
+|---------------------|------------------------------------|-----------------------------------------|
+| **Purpose**         | Specifies where the form data is sent | Identifies the form for client-side manipulation |
+| **Usage Context**   | For server-side processing         | For JavaScript or CSS targeting         |
+| **Type of Value**   | A URL (e.g., `/submit`)            | A unique identifier (e.g., `form1`)     |
+| **Mandatory?**      | No                                | No, but must be unique if used          |
+| **Behavior Impact** | Affects form submission behavior   | Does not affect form submission         |
+
+---
+
+### **Combination Example:**
+```html
+<form id="registerForm" action="/register" method="POST">
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    // Use the id to add custom client-side functionality
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        alert("Form submitted to " + this.action);
+    });
+</script>
+```
+- **`action="/register"`**: Sends data to the server-side `/register` endpoint.
+- **`id="registerForm"`**: Enables JavaScript to attach behavior to the form.-->
+</html>
+
