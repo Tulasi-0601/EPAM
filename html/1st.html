@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tables Demo</title>
+    <style>
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse; /* Collapse borders for a cleaner look */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd; /* Add a light border to cells */
+        }
+
+        th {
+            background-color: #f0f0f0; /* Light gray background for headers */
+            font-weight: bold; /* Make headers bold */
+        }
+
+        .bordered {
+            border: 1px solid black; /* Overall border for the table */
+        }
+
+        .bordered th, .bordered td {
+            border: 1px solid black; /* Border for cells in bordered table */
+        }
+
+
+        .striped tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for even rows */
+        }
+
+        .striped tr:nth-child(odd) {
+            background-color: white; /* White background for odd rows (optional but improves contrast) */
+        }
+
+        .responsive {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            display: block; /* Necessary for overflow to work */
+        }
+
+        /* Optional: Style the caption if you use it */
+        caption {
+            caption-side: top; /* Place caption at the top */
+            font-style: italic;
+            color: #777;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>1. Basic Table</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th> 
+        </tr>
+        <tr>
+            <td>tulasi</td>
+            <td>20</td>
+            <td>hyderabad</td>
+        </tr>
+        <tr>
+            <td>bhavana</td>
+            <td>30</td>
+            <td>London</td>
+        </tr>
+        <tr>
+            <td>chinmayee</td>
+            <td>22</td>
+            <td>Paris</td>
+        </tr>
+         <tr>
+            <td>Tulasi Tejaswi</td>
+            <td>24</td>
+            <td>Hyderabad</td>
+        </tr>
+        <tr>
+            <td>Nikhita</td>
+            <td>28</td>
+            <td>Bangalore</td>
+        </tr>
+    </table>
+
+    <h2>2. Table with Borders</h2>
+    <table class="bordered">
+        <tr>
+            <th>Fruit</th>
+            <th>Color</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>Red</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Banana</td>
+            <td>Yellow</td>
+            <td>0.5</td>
+        </tr>
+        <tr>
+            <td>Orange</td>
+            <td>Orange</td>
+            <td>0.75</td>
+        </tr>
+    </table>
+
+    <h2>3. Striped Table</h2>
+    <table class="striped">
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+        </tr>
+        <tr>
+            <td>The Great Gatsby</td>
+            <td>F. Scott Fitzgerald</td>
+            <td>Classic</td>
+        </tr>
+        <tr>
+            <td>To Kill a Mockingbird</td>
+            <td>Harper Lee</td>
+            <td>Southern Gothic</td>
+        </tr>
+        <tr>
+            <td>Pride and Prejudice</td>
+            <td>Jane Austen</td>
+            <td>Romance</td>
+        </tr>
+    </table>
+
+    <h2>4. Table with Merged Cells</h2>
+    <table class="bordered">
+        <tr>
+            <th rowspan="2">Category</th>
+            <th colspan="2">Details</th>
+        </tr>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Electronics</td>
+            <td>Laptop</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Electronics</td>
+            <td>Phone</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Clothing</td>
+            <td>Shirt</td>
+            <td>5</td>
+        </tr>
+    </table>
+
+    <h2>5. Responsive Table</h2>
+    <div class="responsive">
+        <table class="bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>tulasi</td>
+                <td>tulasi@gmail.com</td>
+                <td>123-456-7890</td>
+                <td>123 Main St</td>
+                <td>USA</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>tejaswi</td>
+                <td>tejaswi@gmail.com</td>
+                <td>987-654-3210</td>
+                <td>456 Oak Ave</td>
+                <td>Canada</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Dharani</td>
+                <td>dharani@gmail.com</td>
+                <td>555-123-4567</td>
+                <td>789 Pine Ln</td>
+                <td>UK</td>
+            </tr>
+             <tr>
+                <td>4</td>
+                <td>Sara</td>
+                <td>sara@gmail.com</td>
+                <td>111-222-3333</td>
+                <td>101 Elm St</td>
+                <td>Australia</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

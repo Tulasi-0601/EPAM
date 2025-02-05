@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles with Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center; /* Center the main heading */
+            margin-bottom: 20px;
+        }
+
+        .article {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 5px;
+        }
+
+        .article h2 {
+            margin-top: 0; /* Remove default top margin from h2 */
+        }
+
+        .media-container {  /* Container for image/video/audio */
+            text-align: center; /* Center media elements */
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 100%; /* Make image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px;
+            display: block; /* Prevent image from affecting text flow */
+            margin: 0 auto; /* Center the image */
+        }
+
+        video, audio {
+            max-width: 100%; /* Make media responsive */
+            height: auto; /* Maintain aspect ratio */
+            margin: 10px auto 0; /* Add top margin and center */
+            display: block; /* Prevent media from affecting text flow */
+        }
+
+        p {
+            text-align: justify; /* Justify the paragraph text */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Featured Articles</h1>
+
+    <div class="article">
+        <h2>Article 1: The Wonders of the Ocean</h2>
+        <p>The ocean is a vast and mysterious realm, teeming with life and holding countless secrets. From the smallest plankton to the largest whales, the diversity of marine life is truly astounding.  Exploring the ocean depths reveals incredible ecosystems and unique adaptations.  Protecting our oceans is vital for the health of our planet.</p>
+        <div class="media-container">
+            <img src="https://source.unsplash.com/500x300/?ocean" alt="Ocean Image">
+            <video controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <audio controls>
+                <source src="https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    </div>
+
+    <div class="article">
+        <h2>Article 2: The Rise of Artificial Intelligence</h2>
+        <p>Artificial intelligence (AI) is rapidly changing the world around us. From self-driving cars to virtual assistants, AI is becoming increasingly integrated into our daily lives.  While the potential benefits of AI are enormous, there are also important ethical considerations to address as AI technology continues to advance.</p>
+        <div class="media-container">
+            <img src="https://source.unsplash.com/500x300/?artificialintelligence" alt="AI Image">
+            <video controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <audio controls>
+                <source src="https://www.soundjay.com/misc/sounds/computer-error-2.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    </div>
+
+    <div class="article">
+        <h2>Article 3: The Power of Music</h2>
+        <p>Music is a universal language that has the power to connect people across cultures and generations.  It can evoke a wide range of emotions, from joy and excitement to sadness and reflection.  Whether you're listening to your favorite song or playing an instrument yourself, music enriches our lives in countless ways.</p>
+        <div class="media-container">
+            <img src="https://source.unsplash.com/500x300/?music" alt="Music Image">
+            <video controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <audio controls>
+                <source src="https://www.soundjay.com/music/sounds/guitar-acoustic-01.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+    </div>
+
+</body>
+</html>

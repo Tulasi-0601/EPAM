@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Page Structure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack header, main content, footer */
+            min-height: 100vh; /* Ensure body takes up full viewport height */
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #555;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto; /* Center the container */
+            flex: 1; /* Allow the container to expand to fill available space */
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 5px;
+        }
+
+        article { /* Style articles within sections */
+            margin-bottom: 20px; /* Add spacing between articles */
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd; /* Add a separator line */
+        }
+
+        article:last-of-type {
+            border-bottom: none; /* Remove separator from the last article */
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Website</h1>
+        <p>Welcome to my HTML5 structured page!</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <section>
+            <h2>About Us</h2>
+            <p>This website showcases the modern HTML5 layout using semantic tags like header, section, and footer. We are passionate about web development and creating user-friendly experiences.</p>
+        </section>
+
+        <section>
+            <h2>Latest Articles</h2>
+
+            <article>
+                <h3>Article 1: Web Development Trends in 2024</h3>
+                <p>Web development is constantly evolving.  In 2024, we are seeing a rise in the use of AI-powered tools, increased focus on accessibility, and the continued growth of serverless architectures.</p>
+            </article>
+
+            <article>
+                <h3>Article 2: Mastering CSS Grid Layout</h3>
+                <p>CSS Grid is a powerful layout tool that allows developers to create complex and responsive designs with ease.  Learning Grid is essential for modern web development.</p>
+            </article>
+
+            <article>
+                <h3>Article 3: The Importance of Semantic HTML</h3>
+                <p>Using semantic HTML elements like `<article>`, `<aside>`, and `<nav>` not only improves the structure of your web pages but also enhances accessibility and SEO.</p>
+            </article>
+
+        </section>
+
+        <section>
+            <h2>Contact Us</h2>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

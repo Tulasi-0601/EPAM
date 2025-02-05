@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Add border-radius to the button */
+
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px; /* Add some space above the error message */
+        }
+
+        /* Style the labels */
+        label {
+            display: block; /* Make labels stack on top of inputs */
+            margin-bottom: 5px;
+        }
+
+        /* Style the select element to look more consistent */
+        select {
+            -webkit-appearance: none; /* Remove default select arrow */
+            -moz-appearance: none; /* Remove default select arrow */
+            appearance: none; /* Remove default select arrow */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='rgba(0,0,0,0.54)' d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); /* Add custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px; /* Adjust padding to accommodate arrow */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <label for="login-username">Username:</label> <input type="text" id="login-username" placeholder="Username" required>
+        <label for="login-password">Password:</label> <input type="password" id="login-password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p id="login-error" class="error"></p>
+    </div>
+
+    <div class="container" id="register-container">
+        <h2>Register</h2>
+        <label for="reg-name">Full Name:</label> <input type="text" id="reg-name" placeholder="Full Name" required>
+        <label for="reg-email">Email:</label> <input type="email" id="reg-email" placeholder="Email" required>
+        <label for="reg-password">Password:</label> <input type="password" id="reg-password" placeholder="Password" required>
+        <label for="user-type">User Type:</label> <select id="user-type">
+            <option value="">Select User Type</option>
+            <option value="student">Student</option>
+            <option value="employee">Employee</option>
+        </select>
+        <label for="reg-dob">Date of Birth:</label> <input type="date" id="reg-dob" required>
+        <p id="dob-error" class="error"></p>
+        <button onclick="register()">Register</button>
+        <p id="register-error" class="error"></p>
+    </div>
+
+    <script>
+        function login() {
+            let username = document.getElementById("login-username").value;
+            let password = document.getElementById("login-password").value;
+            let errorElement = document.getElementById("login-error");
+
+            if (username === "" || password === "") {
+                errorElement.textContent = "Both fields are required!";
+            } else {
+                errorElement.textContent = "";
+                alert("Login Successful!");
+            }
+        }
+
+        function register() {
+            let name = document.getElementById("reg-name").value;
+            let email = document.getElementById("reg-email").value;
+            let password = document.getElementById("reg-password").value;
+            let userType = document.getElementById("user-type").value;
+            let dob = document.getElementById("reg-dob").value;
+            let dobError = document.getElementById("dob-error");
+            let registerError = document.getElementById("register-error");
+
+            if (name === "" || email === "" || password === "" || userType === "" || dob === "") {
+                registerError.textContent = "All fields are required!";
+                return;
+            } else {
+                registerError.textContent = "";
+            }
+
+            // Validate DOB (Age >= 18)
+            let dobDate = new Date(dob);
+            let today = new Date();
+            let age = today.getFullYear() - dobDate.getFullYear();
+            let monthDiff = today.getMonth() - dobDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+                age--;
+            }
+
+            if (age < 18) {
+                dobError.textContent = "You must be at least 18 years old!";
+                return;
+            } else {
+                dobError.textContent = "";
+            }
+
+            alert("Registration Successful!");
+        }
+    </script>
+
+</body>
+</html>
