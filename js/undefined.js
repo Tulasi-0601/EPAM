@@ -1,3 +1,3 @@
-let apple = "fruit";
+let notdefined;
 
-console.log(apple);
+console.log(notdefined);
