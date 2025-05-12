@@ -1,2 +1,2 @@
-var newname = "123";
+var newname = "899";
 console.log(typeof (newname));
